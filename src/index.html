@@ -8,12 +8,12 @@
   </head>
   <body>
     <h1>Currency Exchanger</h1>
+    <p>
+      Enter an amount below and the type of currency who want to convert it to,
+      and the Currency Exchanger will convert that amount from USD to the amount
+      selected.
+    </p>
     <form id="currency-exchanger">
-      <p>
-        Enter an amount below below and the type of currency who want to convert
-        it to, and the Currency Exchanger will convert that amount from USD to
-        the amount selected.
-      </p>
       <div>
         <label for="currency-amount"
           >What is the amount you want to exchange?</label
@@ -21,6 +21,8 @@
         <br />
         <input id="currency-amount" type="number" min="0.01" step="0.01" />
       </div>
+      <br />
+      <div class="currency-amount-error"></div>
       <br />
       <label for="currency-type"
         >What currency type would you like to convert to?</label
@@ -38,8 +40,10 @@
         <option value="ZAR">South Africa Rand</option>
       </select>
       <br />
+      <div id="currency-type-error"></div>
       <br />
-      <button type="submit" class="btn btn-dark">Convert</button>
+      <br />
+      <button type="submit">Convert</button>
     </form>
     <br />
     <div id="output"></div>

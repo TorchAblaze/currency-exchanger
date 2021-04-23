@@ -7,13 +7,23 @@ import Conversion from "./js/conversion.js";
 function conversionResult(response, currency) {
   let responseHTML;
   if (response["error-type"] === "unsupported-code") {
-    responseHTML = `The currency in question does not exist. Please try again.`;
+    hideDivs($("#currency-type-error"));
+    return $("#currency-type-error").html(
+      `The currency in question does not exist. Please try again.`
+    );
   } else if (response["conversion_result"]) {
     responseHTML = `<p>${currency} USD converted to ${response["target_code"]} is ${response["conversion_result"]}</p>`;
   } else {
     responseHTML = `There was a ${response}`;
   }
-  return $("#output").html(responseHTML);
+  $("#output").html(responseHTML);
+  return hideDivs("#output");
+}
+
+function hideDivs() {
+  $("#output").hide();
+  $("#currency-type-error").hide();
+  $("#currency-amount-error").hide();
 }
 
 $(document).ready(function () {
@@ -28,6 +38,7 @@ $(document).ready(function () {
       isNaN(currencyAmount) ||
       currencyAmount < 0.1
     ) {
+      hideDivs($("#output"));
       $("#output").html(
         `Please enter a valid currency amount in decimal format`
       );
@@ -37,7 +48,6 @@ $(document).ready(function () {
     Conversion.getConversion(currencyType, currencyAmount).then(function (
       response
     ) {
-      console.log(response);
       conversionResult(response, currencyAmount);
     });
   });

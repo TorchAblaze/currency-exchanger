@@ -1,5 +1,37 @@
 body {
-  background-color: blanchedalmond;
+  background-color: rgb(41, 39, 39);
   max-width: 900px;
   margin: 0 auto;
+}
+
+h1 {
+  background-color: coral;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  padding: 1%;
+}
+
+p {
+  background-color: coral;
+  margin-top: 20px;
+  padding: 5%;
+}
+
+form {
+  color: white;
+}
+
+#output,
+#currency-type-error {
+  background-color: coral;
+  color: black;
+  display: none;
+  padding: 1%;
+}
+
+button {
+  color: white;
+  border: 1px solid white;
+  background-color: rgb(41, 39, 39);
+  border-radius: 15%;
 }
