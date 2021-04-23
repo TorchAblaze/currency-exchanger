@@ -1,7 +1,7 @@
 export default class Conversion {
-  static getConversion(baseCurrency, targetCurrency) {
+  static getConversion(targetCurrency, amount) {
     return fetch(
-      `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${baseCurrency}/${targetCurrency}`
+      `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${targetCurrency}/${amount}`
     )
       .then(function (response) {
         if (!response.ok) {
