@@ -6,5 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Currency Exchanger</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Currency Exchanger</h1>
+    <form id="currency-exchanger">
+      <p>
+        Enter an amount below below and the type of currency who want to convert
+        it to, and the Currency Exchanger will convert that amount from USD to
+        the amount selected.
+      </p>
+      <div>
+        <label for="currency-amount"
+          >What is the amount you want to exchange?</label
+        >
+        <br />
+        <input id="currency-amount" type="number" />
+      </div>
+      <br />
+      <label for="currency-type"
+        >What currency type would you like to convert to?</label
+      >
+      <br />
+      <select id="currency-type">
+        <option value="AUD">Australia Dollar</option>
+        <option value="BGN">Bulgaria Lev</option>
+        <option value="MXN">Mexico Peso</option>
+        <option value="EUR">Euro</option>
+        <option value="JPY">Japan Yen</option>
+        <option value="AMD">Armenia Dram</option>
+        <option value="CNY">China Yuan/Renminbi</option>
+        <option value="ZAR">South Africa Rand</option>
+      </select>
+      <button type="submit" class="btn">Convert</button>
+    </form>
+    <div id="output"></div>
+  </body>
 </html>
