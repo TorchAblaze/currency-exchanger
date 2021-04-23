@@ -11,7 +11,7 @@ function conversionResult(response, currency) {
   } else if (response["conversion_result"]) {
     responseHTML = `<p>${currency} USD converted to ${response["target_code"]} is ${response["conversion_result"]}</p>`;
   } else {
-    responseHTML = `There was an error: ${response["error-type"]}`;
+    responseHTML = `There was a ${response}`;
   }
   return $("#output").html(responseHTML);
 }
