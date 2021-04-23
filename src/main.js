@@ -8,10 +8,8 @@ function conversionResult(response, currency) {
   let responseHTML;
   if (response["error-type"] === "unsupported-code") {
     responseHTML = `The currency in question does not exist. Please try again.`;
-  } else if (currency === "" || isNaN(currency) || currency < 0) {
-    responseHTML = `Please enter a valid currency amount in decimal format`;
   } else if (response["conversion_result"]) {
-    responseHTML = `<p>${currency} USD is ${response["conversion_result"]} converted in ${response["target_code"]}</p>`;
+    responseHTML = `<p>${currency} USD converted to ${response["target_code"]} is ${response["conversion_result"]}</p>`;
   } else {
     responseHTML = `There was an error: ${response["error-type"]}`;
   }
@@ -22,13 +20,25 @@ $(document).ready(function () {
   $("form#currency-exchanger").submit(function (event) {
     event.preventDefault();
     const currencyType = $("#currency-type").val();
-    const currecnyAmount = $("#currency-amount").val();
-    $("#currency-type").val();
+    const currencyAmount = $("#currency-amount").val();
+    $("#currency-amount").val("");
 
-    Conversion.getConversion(currencyType, currecnyAmount).then(function (
+    if (
+      currencyAmount === "" ||
+      isNaN(currencyAmount) ||
+      currencyAmount < 0.1
+    ) {
+      $("#output").html(
+        `Please enter a valid currency amount in decimal format`
+      );
+      return;
+    }
+
+    Conversion.getConversion(currencyType, currencyAmount).then(function (
       response
     ) {
-      conversionResult(response, currecnyAmount);
+      console.log(response);
+      conversionResult(response, currencyAmount);
     });
   });
 });
