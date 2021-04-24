@@ -34,7 +34,7 @@ This website allows a user to select a currency type that they want to convert a
    - Navigate to `currency-exchanger` in your command line
    - Run the command `npm install` to install dependencies
    - Run the command `npm run build` to make a bundle of the files
-   - Run the command `dotenv-webpack@2.0.0 --save-dev`
+   - Run the command `npm install dotenv-webpack@2.0.0 --save-dev`
    - Run the command `npm run start` to start a development server
 
 ## Known Bugs
