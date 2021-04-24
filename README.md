@@ -22,7 +22,7 @@ This website allows a user to select a currency type that they want to convert a
 
 ### Setup
 
-1. Navigate to the [ExchangeRate-APIsite](https://www.exchangerate-api.com/) website
+1. Navigate to the [ExchangeRate-API](https://www.exchangerate-api.com/) website
 2. Input your email address and click the "Get Free Key" button
 3. Create an account using your email and a password
 4. Agree to the terms of use and click "Get Started"
