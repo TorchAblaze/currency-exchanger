@@ -16,7 +16,7 @@ This website allows a user to select a currency type that they want to convert a
 
 ### Installation
 
-1. Clone the repository: `$ git clone {}`
+1. Clone the repository: `$ git clone https://github.com/TorchAblaze/currency-exchanger.git`
 2. Navigate to the `currency-exchanger` directory on your computer
 3. Open with your preferred text editor to view the code base
 
