@@ -14,22 +14,11 @@
       selected.
     </p>
     <form id="currency-exchanger">
-      <div>
-        <label for="currency-amount"
-          >What is the amount you want to exchange?</label
-        >
-        <br />
-        <input id="currency-amount" type="number" min="0.01" step="0.01" />
-      </div>
-      <br />
-      <div class="currency-amount-error"></div>
-      <br />
-      <label for="currency-type"
-        >What currency type would you like to convert to?</label
+      <label for="currency-base"
+        >What currency type would you like to convert from?</label
       >
       <br />
-      <select id="currency-type">
-        <option value="FXC">This currency doesn't exist</option>
+      <select id="currency-base">
         <option value="AMD">Armenia Dram</option>
         <option value="AUD">Australia Dollar</option>
         <option value="BGN">Bulgaria Lev</option>
@@ -38,6 +27,35 @@
         <option value="JPY">Japan Yen</option>
         <option value="MXN">Mexico Peso</option>
         <option value="ZAR">South Africa Rand</option>
+        <option value="USD">United States of America Dollar</option>
+      </select>
+      <br />
+      <div id="currency-base-error"></div>
+      <br />
+      <div>
+        <label for="currency-amount"
+          >What is the amount you want to exchange?</label
+        >
+        <br />
+        <input id="currency-amount" type="number" min="0.01" step="0.01" />
+      </div>
+      <br />
+      <div id="currency-amount-error"></div>
+      <label for="currency-target"
+        >What currency type would you like to convert to?</label
+      >
+      <br />
+      <select id="currency-target">
+        <option value="FXN">Doesn't Exist</option>
+        <option value="AMD">Armenia Dram</option>
+        <option value="AUD">Australia Dollar</option>
+        <option value="BGN">Bulgaria Lev</option>
+        <option value="CNY">China Yuan/Renminbi</option>
+        <option value="EUR">Euro</option>
+        <option value="JPY">Japan Yen</option>
+        <option value="MXN">Mexico Peso</option>
+        <option value="ZAR">South Africa Rand</option>
+        <option value="USD">United States of America Dollar</option>
       </select>
       <br />
       <div id="currency-type-error"></div>

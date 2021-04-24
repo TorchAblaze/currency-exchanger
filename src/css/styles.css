@@ -8,13 +8,13 @@ h1 {
   background-color: coral;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   text-align: center;
-  padding: 1%;
+  padding: 2%;
 }
 
 p {
   background-color: coral;
   margin-top: 20px;
-  padding: 5%;
+  padding: 2%;
 }
 
 form {
@@ -22,11 +22,12 @@ form {
 }
 
 #output,
-#currency-type-error {
+#currency-type-error,
+#currency-amount-error {
   background-color: coral;
   color: black;
   display: none;
-  padding: 1%;
+  padding: 2%;
 }
 
 button {

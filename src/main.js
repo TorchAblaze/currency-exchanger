@@ -7,72 +7,51 @@ import Conversion from "./js/conversion.js";
 function conversionResult(response, currency) {
   let responseHTML;
   if (response["error-type"] === "unsupported-code") {
-    hideDivs($("#currency-type-error"));
-    return $("#currency-type-error").html(
-      `The currency in question does not exist. Please try again.`
-    );
+    hideDivs("#currency-type-error");
+    responseHTML = `The currency in question does not exist. Please try again.`;
+    return $("#currency-type-error").html(responseHTML);
   } else if (response["conversion_result"]) {
-    responseHTML = `<p>${currency} USD converted to ${response["target_code"]} is ${response["conversion_result"]}</p>`;
+    responseHTML = `<p>${currency} ${response["base_code"]} converted to ${response["target_code"]} is ${response["conversion_result"]}</p>`;
   } else {
-    responseHTML = `There was a ${response}`;
+    responseHTML = `There was an error: ${response["error-type"]}`;
   }
-  $("#output").html(responseHTML);
-  return hideDivs("#output");
+  hideDivs("#output");
+  return $("#output").html(responseHTML);
 }
 
-function hideDivs() {
-  $("#output").hide();
-  $("#currency-type-error").hide();
-  $("#currency-amount-error").hide();
+function hideDivs(resultDiv) {
+  const divList = ["#output", "#currency-type-error", "#currency-amount-error"];
+  const resultIndex = divList.indexOf(resultDiv);
+  divList.splice(resultIndex, 1);
+  divList.forEach((element) => {
+    $(element).hide();
+  });
+  $(resultDiv).show();
 }
 
 $(document).ready(function () {
   $("form#currency-exchanger").submit(function (event) {
     event.preventDefault();
-    const currencyType = $("#currency-type").val();
+    const baseCurrency = $("#currency-base").val();
+    const targetCurrency = $("#currency-target").val();
     const currencyAmount = $("#currency-amount").val();
     $("#currency-amount").val("");
-
     if (
       currencyAmount === "" ||
       isNaN(currencyAmount) ||
       currencyAmount < 0.1
     ) {
-      hideDivs($("#output"));
-      $("#output").html(
+      $("#currency-amount-error").html(
         `Please enter a valid currency amount in decimal format`
       );
+      hideDivs("#currency-amount-error");
       return;
     }
 
-    Conversion.getConversion(currencyType, currencyAmount).then(function (
-      response
-    ) {
-      conversionResult(response, currencyAmount);
-    });
+    Conversion.getConversion(baseCurrency, targetCurrency, currencyAmount).then(
+      function (response) {
+        conversionResult(response, currencyAmount);
+      }
+    );
   });
 });
-
-// base_code: "USD"
-// conversion_rate: 521.9797
-// documentation: "https://www.exchangerate-api.com/docs"
-// result: "success"
-// target_code: "AMD"
-// terms_of_use: "https://www.exchangerate-api.com/terms"
-// time_last_update_unix: 1619136001
-// time_last_update_utc: "Fri, 23 Apr 2021 00:00:01 +0000"
-// time_next_update_unix: 1619222401
-// time_next_update_utc: "Sat, 24 Apr 2021 00:00:01 +0000"
-
-// base_code: "USD"
-// conversion_rate: 521.9797
-// conversion_result: 13049.4925
-// documentation: "https://www.exchangerate-api.com/docs"
-// result: "success"
-// target_code: "AMD"
-// terms_of_use: "https://www.exchangerate-api.com/terms"
-// time_last_update_unix: 1619136001
-// time_last_update_utc: "Fri, 23 Apr 2021 00:00:01 +0000"
-// time_next_update_unix: 1619222401
-// time_next_update_utc: "Sat, 24 Apr 2021 00:00:01 +0000"
-// __proto__: Object
